@@ -1,16 +1,22 @@
-isPartTime=1
-isFullTime=2
-empRatePerHr=20
-randomCheck=$((RANDOM%3))
+isPartTime=1;
+isFullTime=2;
+totalSalary=0;
+empRatePerHr=20;
+numWokingDays=20;
 
-if [ $isFullTime -eq $randomCheck ]
-then	
-empHrs=8;
-elif [ $isPartTime -eq $randomCheck ]
-then
-empHrs=4;
-else
-empHrs=0;
-fi
+for(( day=1; day<=numWokingDays; day++ ))
+do
+randomCheck=$((RANDOM%3));
+
+case $randomCheck in $isFullTime)
+			empHrs=8;;
+		     $isPartTime)
+			empHrs=4;;
+		     *)
+			empHrs=0;;
+esac
 salary=$(($empHrs*$empRatePerHr))
-echo "salary=$salary"
+totalSalary=$(($totalSalary+$salary))
+done
+
+echo "Employee has earned $totalSalary $ in a month";
