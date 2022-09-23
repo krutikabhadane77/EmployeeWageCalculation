@@ -1,3 +1,5 @@
+echo "Welcome to Employee Wage Calculation Program"
+
 is_PartTime=1;
 is_FullTime=2;
 MaxHrs_inMonth=10;
